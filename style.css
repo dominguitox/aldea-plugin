@@ -52,6 +52,13 @@ Author: Jorgelio
     text-align: center;
 }
 
+/* HERO*/
+
+.hero-content-style1 p {
+    font-style: normal !important;
+    font-size: x-large !important;
+    text-shadow: black 1px 1px 0.5px !important;
+}
 
 /* ESTILOS BOTONES HERO*/
 
