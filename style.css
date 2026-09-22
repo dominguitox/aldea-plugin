@@ -1,0 +1,225 @@
+/*
+Theme Name: Aldea tema
+Template: onepress
+Version: 1.1.0
+Text Domain: aldea-tema
+Author: Jorgelio
+*/
+
+/* TAGS */
+.tag {
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.rojo {
+    background: #ff4d4d;
+}
+
+.naranjo {
+    background: #ffaf4d;
+}
+
+.verde {
+    background: #03c4a1;
+}
+
+.azul {
+    background: #4d74ff;
+}
+
+.gris {
+    background: #ccc;
+    color: #333;
+}
+
+.negro {
+    background: #222;
+}
+
+.boton {
+    margin: 0 5px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+}
+
+
+/* ESTILOS BOTONES HERO*/
+
+.btn-hero {
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 10px 20px !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    display: inline-block;
+}
+
+.btn-fijo {
+    background: white !important;
+    color: #000000 !important;
+}
+
+.btn-fijo:hover {
+    background: #000000 !important;
+    color: white !important;
+}
+
+.btn-dinamico {
+    background: #ffffffe8 !important;
+    color: black !important;
+}
+
+.btn-dinamico:hover {
+    background: var(--hover-dinamico) !important;
+    color: #ffffff !important;
+}
+
+.hero-animacion-botones {
+    opacity: 0;
+    animation: entrarHaciaArriba 1s ease-out forwards;
+    animation-delay: 1.8s;
+}
+
+@keyframes entrarHaciaArriba {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        /* Empieza 30px más abajo */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* Sube a su posición original */
+    }
+}
+
+/*  CSS ADICIONAL
+*/
+
+.single-taller .entry-header .entry-meta {
+    display: none;
+}
+
+.entry-content {
+    margin-bottom: 0px;
+}
+
+.single-evento .entry-header .entry-meta {
+    display: none;
+}
+
+#seccion-inscripcion {
+    border: 1px solid #dbdbdb;
+    border-radius: 0px !important;
+}
+
+/* ESTILOS ARCHIVE
+*/
+
+.tarjeta-taller {
+    border: 1px solid #dbdbdb;
+    border-radius: 6px;
+
+}
+
+.info-tarjeta {
+    border-top: 1px solid #dbdbdb;
+}
+
+/* ESTILOS SINGLE TALLERy eventos
+*/
+
+.ficha h3 {
+    color: #444;
+}
+
+.info-taller-pods {
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+}
+
+.info-evento-pods {
+    border: 1px solid #dbdbdb;
+
+}
+
+/**/
+.btn-rojo {
+    background: #e91e63;
+    border-color: #e91e63;
+    color: white !important;
+}
+
+
+/* ESTILOS 2*/
+
+.onepress-menu>li:last-child>a {
+    padding-right: 17px !important;
+}
+
+.onepress-menu a {
+    font-family: "Space Grotesk", sans-serif !important;
+    color: white !important;
+}
+
+.onepress-menu a:hover {
+    color: white !important;
+    background: #ff9800;
+}
+
+.onepress-menu ul a {
+    color: black !important;
+    font-weight: lighter;
+}
+
+.onepress-menu ul li a {
+    border-top: none !important;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "IM Fell French Canon", serif;
+    text-transform: capitalize !important;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-size: 1rem !important;
+    font-family: "Space Grotesk", sans-serif !important;
+
+}
+
+.hero-large-text {
+    text-shadow: #010101 2px 2px 1px !important;
+}
+
+.hero-content.style1 p {
+    text-shadow: 1px 1px 1px #010101 !important;
+
+}
+
+.site-header {
+    background: #444 !important;
+}
