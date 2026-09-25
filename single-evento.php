@@ -85,7 +85,7 @@ $layout = onepress_get_layout();
                                 <?php endif; ?>
 
                                 <?php if ($proxima_fecha): ?>
-                                    <li><strong>📅 Próxima edición:</strong>
+                                    <li><strong>Próxima edición:</strong>
                                         <?php
                                         if ($evento_pasado) {
                                             echo '<span style="color: red; font-weight: bold;">Por anunciar</span>';

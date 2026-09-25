@@ -43,34 +43,10 @@ $layout = onepress_get_layout();
 
                     $imagen_retrato = get_post_meta($post_id, 'imagen_retrato', true);
 
-                    //  CAMPOS DE HORARIO
-                    $dia = get_post_meta($post_id, 'dia', true);
-                    $hora_inicio = get_post_meta($post_id, 'hora_inicio', true);
-                    $hora_termino = get_post_meta($post_id, 'hora_termino', true);
-
-                    $dia_2 = get_post_meta($post_id, 'dia_2', true);
-                    $hora_inicio_2 = get_post_meta($post_id, 'hora_inicio_2', true);
-                    $hora_termino_2 = get_post_meta($post_id, 'hora_termino_2', true);
-
                     //  CAMPOS DE AVISOS EXTRA
                     $esta_suspendido = get_post_meta($post_id, 'esta_suspendido', true);
                     $aviso_extra_titulo = get_post_meta($post_id, 'aviso_extra_titulo', true);
                     $aviso_extra_descripcion = get_post_meta($post_id, 'aviso_extra_descripcion', true);
-
-                    // Función para extraer IDs de imagen de Pods
-                    if (!function_exists('aldea_extraer_id_imagen_pod')) {
-                        function aldea_extraer_id_imagen_pod($img_field)
-                        {
-                            if (is_array($img_field) && isset($img_field['ID']))
-                                return $img_field['ID'];
-                            if (is_array($img_field) && !empty($img_field))
-                                return $img_field[0]['ID'] ?? $img_field[0];
-                            if (is_numeric($img_field))
-                                return $img_field;
-                            return false;
-                        }
-                    }
-
 
                     $id_cuadrada = aldea_extraer_id_imagen_pod($imagen_cuadrada);
                     $id_retrato = aldea_extraer_id_imagen_pod($imagen_retrato);
@@ -91,29 +67,18 @@ $layout = onepress_get_layout();
                                 <?php endif; ?>
 
                                 <!-- HORARIO 1 -->
-                                <?php if ($dia && $hora_inicio): ?>
-                                    <li><strong>Horario:</strong>
-                                    </li>
-                                    <?php echo esc_html($dia); ?>
-                                    <?php if ($hora_termino): ?>
-                                        de <?php echo esc_html(date('H:i', strtotime($hora_inicio))); ?> a
-                                        <?php echo esc_html(date('H:i', strtotime($hora_termino))); ?>
-                                    <?php else: ?>
-                                        a las <?php echo esc_html(date('H:i', strtotime($hora_inicio))); ?>
-                                    <?php endif; ?>
-                                <?php endif; ?>
+                                <?php
+                                if (function_exists('imprimir_horario')) {
+                                    imprimir_horario($id);
+                                }
+                                ?>
 
                                 <!-- HORARIO 2 -->
-                                <?php if ($dia_2 && $hora_inicio_2): ?>
-                                    <li> <?php echo esc_html($dia_2); ?>
-                                        <?php if ($hora_termino_2): ?>
-                                            de <?php echo esc_html(date('H:i', strtotime($hora_inicio_2))); ?> a
-                                            <?php echo esc_html(date('H:i', strtotime($hora_termino_2))); ?>
-                                        <?php else: ?>
-                                            a las <?php echo esc_html(date('H:i', strtotime($hora_inicio_2))); ?>
-                                        <?php endif; ?>
-                                    </li>
-                                <?php endif; ?>
+                                <?php
+                                if (function_exists('imprimir_horario')) {
+                                    imprimir_horario($id, '2');
+                                }
+                                ?>
 
                                 <?php if ($modalidad): ?>
                                     <li><strong>Modalidad:</strong>
@@ -252,10 +217,10 @@ $layout = onepress_get_layout();
                             </div>
 
                             <?php /*
-               if ($id_cuadrada): ?>
-                   <?php echo wp_get_attachment_image($id_cuadrada, 'large', false, ['style' => 'width: 100%; height: auto; border-radius: 8px; object-fit: cover;']); ?>
-               <?php endif;
-               */ ?>
+      if ($id_cuadrada): ?>
+          <?php echo wp_get_attachment_image($id_cuadrada, 'large', false, ['style' => 'width: 100%; height: auto; border-radius: 8px; object-fit: cover;']); ?>
+      <?php endif;
+      */ ?>
                         </div>
                     </div>
                     <!-- DATOS DE AUTOR Y FECHA AL FINAL -->
