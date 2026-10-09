@@ -33,6 +33,9 @@ $layout = onepress_get_layout();
                     // CAMPOS INFORMACION
                     $post_id = get_the_ID();
                     $imagen_cuadrada = get_post_meta($post_id, 'imagen_cuadrada', true);
+
+                    $imagenes = get_post_meta($post_id, 'imagenes', true);
+
                     $es_gratuito = get_post_meta($post_id, 'es_gratuito', true);
                     $es_libre = get_post_meta($post_id, 'es_libre', true);
                     $valor = get_post_meta($post_id, 'valor', true);
@@ -48,8 +51,8 @@ $layout = onepress_get_layout();
                     $aviso_extra_titulo = get_post_meta($post_id, 'aviso_extra_titulo', true);
                     $aviso_extra_descripcion = get_post_meta($post_id, 'aviso_extra_descripcion', true);
 
-                    $id_cuadrada = aldea_extraer_id_imagen_pod($imagen_cuadrada);
-                    $id_retrato = aldea_extraer_id_imagen_pod($imagen_retrato);
+               //     $id_cuadrada = aldea_extraer_id_imagen_pod($imagen_cuadrada);
+                //    $id_retrato = aldea_extraer_id_imagen_pod($imagen_retrato);
                     ?>
                     <!-- FICHA TALLER -->
                     <div class="info-taller-pods"
@@ -194,8 +197,8 @@ $layout = onepress_get_layout();
                         <!-- COLUMNA DERECHA: Imágenes Personalizadas -->
                         <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
 
-                            <?php if ($id_retrato): ?>
-                                <?php echo wp_get_attachment_image($id_retrato, 'large', false, ['style' => 'width: 100%; height: auto; border-radius: 8px; object-fit: cover;']); ?>
+                            <?php if ($imagenes): ?>
+                                <?php echo wp_get_attachment_image($imagenes, 'large', false, ['style' => 'width: 100%; height: auto; border-radius: 8px; object-fit: cover;']); ?>
                             <?php endif; ?>
 
                             <!-- BOTONES DE INSCRIBIRSE Y CONTACTO-->
