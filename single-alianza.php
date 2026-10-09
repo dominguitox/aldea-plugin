@@ -36,12 +36,26 @@
                 <div class="entry-content">
                     <?php the_content(); ?>
                 </div>
-                <!-- Grid Galería + Descripcion 2 -->
 
-                <div id="galeria" style="display: grid;
-                 grid-template-columns: 50% 50%; gap: 20px;">
-                    <div>
-                        <!-- Galería rotatoria con botones y pausa al hover -->
+                <style>
+                    .grid-alianzas {
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 20px;
+                    }
+
+                    @media (min-width: 768px) {
+                        .grid-alianzas {
+                            grid-template-columns: 1fr 1fr;
+                        }
+                    }
+                </style>
+
+                <!-- Grid Galería + Descripcion 2 (Apertura corregida sin cierre prematuro) -->
+                <div id="galeria" class="grid-alianzas">
+
+                    <!-- Columna 1: Carrusel -->
+                    <div style="margin-bottom: 20px;">
                         <?php
                         $imagenes = get_post_meta(get_the_ID(), 'galeria', false);
 
@@ -116,12 +130,10 @@
                                                 iniciarIntervalo();
                                             });
 
-                                            // Detiene la rotación al poner el mouse encima
                                             contenedor.addEventListener('mouseenter', () => {
                                                 clearInterval(intervalo);
                                             });
 
-                                            // Reanuda la rotación al quitar el mouse
                                             contenedor.addEventListener('mouseleave', () => {
                                                 iniciarIntervalo();
                                             });
@@ -132,20 +144,21 @@
                             endif;
                         }
                         ?>
-
                     </div>
 
+                    <!-- Columna 2: Descripción 2 -->
                     <div>
                         <?php
                         $descripcion = get_post_meta(get_the_ID(), 'descripcion', true);
 
                         if ($descripcion) {
-                            // wp_kses_post permite HTML seguro y wpautop genera los párrafos <p>
                             echo wpautop(wp_kses_post($descripcion));
                         }
                         ?>
                     </div>
+
                 </div>
+
             </article>
 
         <?php endwhile; ?>
