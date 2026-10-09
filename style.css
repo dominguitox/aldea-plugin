@@ -178,7 +178,7 @@ Author: Jorgelio
 
 .onepress-menu a {
     font-family: "Space Grotesk", sans-serif !important;
-    color: white !important;
+    color: black !important;
 }
 
 .onepress-menu a:hover {
@@ -227,5 +227,5 @@ textarea {
 }
 
 .site-header {
-    background: #444 !important;
+    background: white !important;
 }
