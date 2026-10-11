@@ -152,10 +152,7 @@ $layout = onepress_get_layout();
                                     <?php echo esc_html(get_post_meta($post_id, 'aviso_extra_descripcion', true)); ?>
 
                                 </div>
-                                <div id="inscripcion" style="margin-top:30px;">
-                                    <h3>Inscripción</h3>
-                                    <?php echo do_shortcode('[contact-form-7 id="996981d" title="Formulario contacto taller"]'); ?>
-                                </div>
+
                             <?php endif; ?>
                             <!-- FORMULARIO DE INSCRIPCIÓN -->
                             <div id="seccion-inscripcion"
