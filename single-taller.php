@@ -32,9 +32,6 @@ $layout = onepress_get_layout();
                     <?php
                     // CAMPOS INFORMACION
                     $post_id = get_the_ID();
-                    $imagen_cuadrada = get_post_meta($post_id, 'imagen_cuadrada', true);
-
-                    $imagenes = get_post_meta($post_id, 'imagenes', true);
 
                     $es_gratuito = get_post_meta($post_id, 'es_gratuito', true);
                     $es_libre = get_post_meta($post_id, 'es_libre', true);
@@ -51,8 +48,6 @@ $layout = onepress_get_layout();
                     $aviso_extra_titulo = get_post_meta($post_id, 'aviso_extra_titulo', true);
                     $aviso_extra_descripcion = get_post_meta($post_id, 'aviso_extra_descripcion', true);
 
-               //     $id_cuadrada = aldea_extraer_id_imagen_pod($imagen_cuadrada);
-                //    $id_retrato = aldea_extraer_id_imagen_pod($imagen_retrato);
                     ?>
                     <!-- FICHA TALLER -->
                     <div class="info-taller-pods"
@@ -72,14 +67,14 @@ $layout = onepress_get_layout();
                                 <!-- HORARIO 1 -->
                                 <?php
                                 if (function_exists('imprimir_horario')) {
-                                    imprimir_horario($id);
+                                    imprimir_horario($post_id);
                                 }
                                 ?>
 
                                 <!-- HORARIO 2 -->
                                 <?php
                                 if (function_exists('imprimir_horario')) {
-                                    imprimir_horario($id, '2');
+                                    imprimir_horario($post_id, '2');
                                 }
                                 ?>
 
@@ -100,7 +95,7 @@ $layout = onepress_get_layout();
                                     <?php elseif ($cupos !== '' && $cupos !== false): ?>
                                         <span
                                             style="background: #ccc; color: #333; padding: 4px 10px; border-radius: 20px; font-weight: bold;">
-                                            <?php echo (int) $cupos - (int) $cupos_usados; ?> Cupos Disponibles de
+                                            - <?php echo (int) $cupos - (int) $cupos_usados; ?> Cupos Disponibles de
                                             <?php echo esc_html($cupos); ?>
                                         </span>
                                     <?php endif; ?>
@@ -176,10 +171,6 @@ $layout = onepress_get_layout();
                                         if (campoMensaje) {
                                             // Opción A (Activada): Como Placeholder (Texto fantasma)
                                             campoMensaje.placeholder = "Hola! Me interesa inscribirme al taller <?php echo esc_js(get_the_title()); ?>";
-
-                                            // Opción B (Desactivada): Como texto pre-escrito (Recomendado si quieres recibir este texto por correo).
-                                            // Para usar esta opción, quítale las dos barras '//' del principio a la línea de abajo, y pónselas a la línea de arriba.
-                                            // campoMensaje.value = "Hola! Me interesa inscribirme al taller <?php echo esc_js(get_the_title()); ?>";
                                         }
                                     });
                                 </script>
@@ -196,10 +187,11 @@ $layout = onepress_get_layout();
 
                         <!-- COLUMNA DERECHA: Imágenes Personalizadas -->
                         <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
-
-                            <?php if ($imagenes): ?>
-                                <?php echo wp_get_attachment_image($imagenes, 'large', false, ['style' => 'width: 100%; height: auto; border-radius: 8px; object-fit: cover;']); ?>
-                            <?php endif; ?>
+                            <?php
+                            if (function_exists('imprimir_galeria_rotatoria')) {
+                                imprimir_galeria_rotatoria($post_id);
+                            }
+                            ?>
 
                             <!-- BOTONES DE INSCRIBIRSE Y CONTACTO-->
                             <div
@@ -219,11 +211,6 @@ $layout = onepress_get_layout();
 
                             </div>
 
-                            <?php /*
-      if ($id_cuadrada): ?>
-          <?php echo wp_get_attachment_image($id_cuadrada, 'large', false, ['style' => 'width: 100%; height: auto; border-radius: 8px; object-fit: cover;']); ?>
-      <?php endif;
-      */ ?>
                         </div>
                     </div>
                     <!-- DATOS DE AUTOR Y FECHA AL FINAL -->
@@ -237,6 +224,16 @@ $layout = onepress_get_layout();
                         </span>
                     </div>
 
+                    <!-- NAVEGACIÓN DE TALLERES (ANTERIOR / SIGUIENTE) -->
+                    <div class="navegacion-talleres"
+                        style="display: flex; justify-content: space-between; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eaeaea; font-weight: bold;">
+                        <div class="nav-anterior">
+                            <?php previous_post_link('%link', '← %title'); ?>
+                        </div>
+                        <div class="nav-siguiente">
+                            <?php next_post_link('%link', '%title →'); ?>
+                        </div>
+                    </div>
 
 
                 <?php endwhile; // End of the loop. ?>
